@@ -1,5 +1,12 @@
+padded_file_name <- function(n) {
+    c <- as.character(n)
+    len_c <- nchar(c)
+    padded <- paste(paste(rep("0", 3 - len_c), collapse=""), c, sep="")
+    paste(padded, ".csv", sep="")
+}
+
 full_paths <- function(directory, ids) {
-    sapply(ids, function(id) { paste(directory, id, sep="/") })
+    sapply(ids, function(id) { paste(directory, padded_file_name(id), sep="/") })
 }
 
 as_data_frame <- function(files) {
