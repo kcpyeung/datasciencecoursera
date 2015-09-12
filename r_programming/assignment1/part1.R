@@ -26,3 +26,14 @@ nitrate <- function(df) {
     mean(remove_na(df["nitrate"]))
 }
 
+pollutantmean <- function(directory, pollutant, id = 1:332) {
+    file_names <- full_paths(directory, id)
+    data_frame <- as_data_frame(file_names)
+    if (pollutant == "nitrate") {
+        nitrate(data_frame)
+    } else if (pollutant == "sulfate") {
+        sulfate(data_frame)
+    } else {
+        NA
+    }
+}
