@@ -4,11 +4,7 @@ full_paths <- function(directory, ids) {
 
 as_data_frame <- function(files) {
     all_data_frames <- lapply(files, function(file) { read.csv(file) })
-    df <- data.frame()
-    for (i in 1:length(all_data_frames)) {
-        df <- rbind(df, all_data_frames[[i]])
-    }
-    df
+    Reduce(rbind, all_data_frames, data.frame())
 }
 
 remove_na <- function(df) {
