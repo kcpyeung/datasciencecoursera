@@ -11,3 +11,15 @@ as_data_frame <- function(files) {
     df
 }
 
+remove_na <- function(df) {
+    df[!is.na(df)]
+}
+
+sulfate <- function(df) {
+    mean(remove_na(df["sulfate"]))
+}
+
+nitrate <- function(df) {
+    mean(remove_na(df["nitrate"]))
+}
+
